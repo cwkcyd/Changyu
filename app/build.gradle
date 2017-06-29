@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def outputPathName = projectDir.absolutePath + File.separator + "Apk/changyu.apk"
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -15,6 +17,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //这是应用编译完成
+    applicationVariants.all { variant ->
+        variant.outputs.each  { output ->
+            //开始输出
+            output.outputFile = new File(outputPathName.replace(".apk", "-" + defaultConfig.versionName + ".apk"))
         }
     }
 }
