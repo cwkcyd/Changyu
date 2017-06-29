@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG, "changyu_new");
 
         printLog();
+        printLog();
     }
 
     private void printLog() {
