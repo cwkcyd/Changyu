@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
-def outputPathName = projectDir.absolutePath + File.separator + "Apk/changyu.apk"
+def outputPath = new File(projectDir.absolutePath).parent
+def outputPathParent = outputPath + File.separator + "Apk"
+
 
 android {
     compileSdkVersion 25
@@ -24,7 +26,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each  { output ->
             //开始输出
-            output.outputFile = new File(outputPathName.replace(".apk", "-" + defaultConfig.versionName + ".apk"))
+            output.outputFile = new File(outputPathParent, "${project.parent.getName()}_${getVersionName()}.apk")
         }
     }
 }
@@ -37,4 +39,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+}
+
+def getVersionName() {
+    return new Date().format('MMdd_HHmm')
 }
