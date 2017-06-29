@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i("MainActivity", "onCreate");
         Log.e("MainActivity", "changyu");
+        Log.e("MainActivity", "changyu_new");
     }
 }
